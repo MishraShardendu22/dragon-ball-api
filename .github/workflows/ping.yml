@@ -1,0 +1,13 @@
+name: Keep Render Backend Alive
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # every 5 mins
+  workflow_dispatch:
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Render Endpoint
+        run: curl -s https://dragon-ball-api-grlr.onrender.com/random

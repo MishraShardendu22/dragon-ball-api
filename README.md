@@ -1,5 +1,7 @@
 # Dragon Ball API
 
+**Note - Documentation have examples of how you can use the API and an ASK-AI chat bot to help you as well !!**
+
 **Love Dragon Ball?** This API is made for all Dragon Ball fans! Access, update, and manage your favorite Dragon Ball data with our custom-built API.
 
 <p align="center">

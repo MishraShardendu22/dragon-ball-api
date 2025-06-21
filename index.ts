@@ -1,11 +1,12 @@
 // Import necessary modules
-import AddInitialData from './AddingToDataSet/AddingToDataSet';
-import dbConnect from './dbConnect/dbConnect';
-import Data from './Model/pattern.model';
-import jwt from 'jsonwebtoken';
-import express, { Response, Request, NextFunction } from 'express';
-import dotenv from 'dotenv';
 import path from 'path';
+import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
+import Data from './Model/pattern.model';
+import rateLimit from 'express-rate-limit';
+import dbConnect from './dbConnect/dbConnect';
+import AddInitialData from './AddingToDataSet/AddingToDataSet';
+import express, { Response, Request, NextFunction } from 'express';
 
 // Initialize express app
 const app = express();
@@ -26,6 +27,13 @@ const Port = process.env.PORT || 4000;
 // Middleware for JSON parsing and serving static files
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
+
+// Adding Rate Limiter to prevent abuse
+app.use('/', rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 120,
+  message: "Too many requests from this IP, please try again after 15 minutes"
+}));
 
 // Root route, documentation link
 app.get('/', (req: Request, res: Response) => {

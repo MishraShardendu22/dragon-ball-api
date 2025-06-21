@@ -1,11 +1,12 @@
 {
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
+    "express-rate-limit": "^7.5.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.6.3",
     "nodemon": "^3.1.7",
-    "cors": "^2.8.5",
     "typescript": "^5.6.2"
   },
   "devDependencies": {
@@ -20,6 +21,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "dev": "nodemon index.ts",
     "start": "node dist/index.js"
   },
   "keywords": [],

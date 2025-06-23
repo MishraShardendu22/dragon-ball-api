@@ -1,5 +1,8 @@
 # Testing Documentation – Dragon Ball API
 
+## Results 
+![Results](API_Testing_Results.png)
+
 ## Objective
 
 Implement full coverage across unit, integration, and API-level tests for the Node.js API server.
@@ -109,15 +112,3 @@ npx jest --coverage
 | MongoDB   | Data layer for integration |
 
 ---
-
-## Common Issues
-
-* `MongooseError: Operation buffering timed out`
-
-  * Cause: DB connection not established before test run
-  * Fix: Ensure `await dbConnect()` is executed in `beforeAll`
-
-* `DELETE /delete/:id` fails with 404
-
-  * Cause: ID mismatch type (string/ObjectId vs. integer)
-  * Fix: Ensure ID parsing matches DB schema type

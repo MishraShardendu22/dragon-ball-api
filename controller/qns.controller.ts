@@ -63,17 +63,20 @@ export const addQuestion = async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Failed to add a question' });
   }
 };
-
 export const updateQuestion = async (req: Request, res: Response) => {
   try {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
     const data = req.body;
 
-    const updatedData = await Data.findByIdAndUpdate(id, {
-      series: data.series,
-      question: data.question,
-      answer: data.answer
-    }, { new: true });
+    const updatedData = await Data.findOneAndUpdate(
+      { _id: id },
+      {
+        series: data.series,
+        question: data.question,
+        answer: data.answer
+      },
+      { new: true }
+    );
 
     if (!updatedData) {
       return res.status(404).json({ message: 'Question not found' });
@@ -88,11 +91,11 @@ export const updateQuestion = async (req: Request, res: Response) => {
 
 export const patchQuestion = async (req: Request, res: Response) => {
   try {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
     const { series, question, answer } = req.body;
 
-    const updatedQuestion = await Data.findByIdAndUpdate(
-      id,
+    const updatedQuestion = await Data.findOneAndUpdate(
+      { _id: id },
       { series, question, answer },
       { new: true, runValidators: true }
     );
@@ -111,7 +114,7 @@ export const patchQuestion = async (req: Request, res: Response) => {
 export const deleteQuestion = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
-    const deleted = await Data.findByIdAndDelete(id);
+    const deleted = await Data.findOneAndDelete({ _id: parseInt(id) });
 
     if (!deleted) {
       return res.status(404).json({ message: 'No such question exists' });

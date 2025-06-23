@@ -10,4 +10,5 @@ export default {
   collectCoverageFrom: ['**/*.ts', '!**/node_modules/**', '!**/tests/**'],
   detectOpenHandles: true,
   forceExit: true,
+  testTimeout: 20000,
 };

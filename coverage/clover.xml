@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1750673078059" clover="3.2.0">
-  <project timestamp="1750673078059" name="All files">
+<coverage generated="1750673330873" clover="3.2.0">
+  <project timestamp="1750673330873" name="All files">
     <metrics statements="141" coveredstatements="98" conditionals="30" coveredconditionals="19" methods="22" coveredmethods="13" elements="193" coveredelements="130" complexity="0" loc="141" ncloc="141" packages="6" files="8" classes="8"/>
     <package name="Dragon-Ball-Api">
       <metrics statements="16" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>

@@ -1,14 +1,17 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
+	"runtime"
 	"sync"
 )
 
 func main() {
+	fmt.Println("GOMAXPROCS:", runtime.GOMAXPROCS(0))
 	var wg sync.WaitGroup
 
-	for i := 0; i < 2000; i++ {
+	for range 20 {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()

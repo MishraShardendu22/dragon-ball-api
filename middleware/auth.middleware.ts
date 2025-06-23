@@ -1,7 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
-export const verifyToken = (req: Request, res: Response, next: NextFunction) => {
+interface AuthenticatedRequest extends Request {
+  user?: any;
+}
+
+export const verifyToken = (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
@@ -10,9 +14,9 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction) => 
 
   const token = authHeader.split(' ')[1];
 
-  jwt.verify(token, process.env.JWT_SECRET!, (err, user) => {
+  jwt.verify(token, process.env.JWT_SECRET || 'secret', (err, user) => {
     if (err) {
-      return res.status(403).json({ message: 'Invalid token' });
+      return res.status(400).json({ message: 'Invalid token' });
     }
     req.user = user;
     next();

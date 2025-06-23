@@ -1,4 +1,14 @@
 {
+  "name": "dragon-ball",
+  "version": "1.0.0",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon server.ts",
+    "start": "node dist/server.js",
+    "test": "jest --coverage",
+    "ci:test": "jest --coverage --runInBand"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -12,20 +22,13 @@
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/express-serve-static-core": "^4.19.5",
+    "@types/jest": "^30.0.0",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^22.5.5",
+    "@types/supertest": "^6.0.3",
+    "jest": "^30.0.2",
+    "supertest": "^7.1.1",
+    "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2"
-  },
-  "name": "dragon-ball",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "build": "tsc",
-    "dev": "nodemon index.ts",
-    "start": "node dist/index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  }
 }

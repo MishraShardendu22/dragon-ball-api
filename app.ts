@@ -3,9 +3,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import rateLimit from 'express-rate-limit';
 import authRoutes from './route/auth.route';
-import dbConnect from './dbConnect/dbConnect';
 import questionRoutes from './route/qns.route';
-import AddInitialData from './AddingToDataSet/AddingToDataSet';
 
 dotenv.config();
 
@@ -39,14 +37,4 @@ app.get('/', (_req, res) => {
 app.use('/', authRoutes);
 app.use('/', questionRoutes);
 
-const PORT = process.env.PORT || 4000;
-
-app.listen(PORT, async () => {
-  try {
-    await dbConnect();
-    await AddInitialData();
-    console.log(`Server running at http://localhost:${PORT}`);
-  } catch (err) {
-    console.error('Startup failed:', err);
-  }
-});
+export default app;

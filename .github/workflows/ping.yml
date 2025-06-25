@@ -2,12 +2,14 @@ name: Keep Render Backend Alive
 
 on:
   schedule:
-    - cron: '*/2 * * * *'  # every 2 mins
+    - cron: '*/2 * * * *'
   workflow_dispatch:
 
 jobs:
   keep-alive:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping Render Endpoint
-        run: curl -s https://dragon-ball-api-grlr.onrender.com/random
+      - name: Ping Render Endpoints
+        run: |
+          curl -s https://dragon-ball-api-grlr.onrender.com/random
+          curl -s https://nutrition-calculator-hvzj.onrender.com/test123

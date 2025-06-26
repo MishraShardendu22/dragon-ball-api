@@ -32,5 +32,8 @@ jobs:
           npm run start & 
           sleep 15
 
+      - name: Install Keploy
+        run: curl -kL https://get.keploy.io/install.sh | sh
+
       - name: Run Keploy tests
-        run: curl -sSfL https://get.keploy.io/install.sh | sh && keploy test -c "curl -X GET http://localhost:3000/random" -g
+        run: keploy test -c "curl -X GET http://localhost:3000/random" -g

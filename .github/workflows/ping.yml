@@ -12,4 +12,5 @@ jobs:
       - name: Ping Render Endpoints
         run: |
           curl -s https://dragon-ball-api-grlr.onrender.com/random
+          curl -s https://dragon-ball-api-6yp5.onrender.com/random 
           curl -s https://nutrition-calculator-hvzj.onrender.com/test123

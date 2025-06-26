@@ -33,4 +33,4 @@ jobs:
           sleep 15
 
       - name: Run Keploy tests
-        run: curl -sSfL https://get.keploy.io/install.sh | sh && keploy test -c "curl -X GET https://dragon-ball-api-grlr.onrender.com/random" -g
+        run: curl -sSfL https://get.keploy.io/install.sh | sh && keploy test -c "curl -X GET http://localhost:3000/random" -g

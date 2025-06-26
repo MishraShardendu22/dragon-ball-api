@@ -1,6 +1,8 @@
 import path from 'path';
 import dotenv from 'dotenv';
 import express from 'express';
+import { swaggerSpec } from './swagger';
+import swaggerUi from 'swagger-ui-express';
 import rateLimit from 'express-rate-limit';
 import authRoutes from './route/auth.route';
 import questionRoutes from './route/qns.route';
@@ -8,6 +10,7 @@ import questionRoutes from './route/qns.route';
 dotenv.config();
 
 const app = express();
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Extend Request type for JWT
 declare module 'express-serve-static-core' {

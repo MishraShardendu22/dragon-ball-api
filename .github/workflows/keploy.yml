@@ -33,7 +33,9 @@ jobs:
           sleep 15
 
       - name: Install Keploy
-        run: curl -kL https://get.keploy.io/install.sh | sh
+        run: |
+          curl --silent -O -L https://keploy.io/install.sh
+          source install.sh
 
       - name: Run Keploy tests
         run: keploy test -c "curl -X GET http://localhost:3000/random" -g

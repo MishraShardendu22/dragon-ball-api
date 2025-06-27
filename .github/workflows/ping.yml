@@ -14,3 +14,4 @@ jobs:
           curl -s https://dragon-ball-api-grlr.onrender.com/random
           curl -s https://dragon-ball-api-6yp5.onrender.com/random 
           curl -s https://nutrition-calculator-hvzj.onrender.com/test123
+          curl -s https://go-chatbot-backend.onrender.com/test

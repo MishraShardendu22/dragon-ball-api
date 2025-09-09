@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "a0ebd80d-5c94-44ea-82b2-fd76325457d7",
+		"name": "DragonBallAPI",
+		"description": "The **Dragon Ball API** is a custom-built RESTful web service designed and developed in TypeScript, offering a comprehensive range of functionality tailored for interacting with data from the Dragon Ball universe. Developed by Shardendu Mishra, this API serves as an efficient tool for developers and enthusiasts alike to retrieve, add, update, and delete information related to characters, sagas, episodes, and other related elements from the Dragon Ball series.\n\n### Core Features\n\n1. **Character and Series Data**:  \n    The API provides endpoints that allow users to fetch character-related data and series-specific information. By querying with parameters like character ID or series name, users can retrieve comprehensive data on a range of Dragon Ball elements. The `/random` endpoint delivers a randomly selected question from the dataset, providing an element of surprise for fans and trivia applications.\n    \n2. **CRUD Operations**:  \n    The API supports full **CRUD** (Create, Read, Update, Delete) functionality, allowing users to manage the dataset dynamically. Using HTTP methods such as `POST`, `GET`, `PUT`, `PATCH`, and `DELETE`, the API empowers admins to:\n    \n    - Add new questions to the dataset.\n        \n    - Retrieve questions by ID or series.\n        \n    - Update questions either fully or partially.\n        \n    - Delete individual questions or reset the entire dataset.\n        \n3. **Admin Authentication with JWT**:  \n    For admin-level actions like deleting or resetting the entire dataset, the API uses **JWT (JSON Web Tokens)** for authentication. Admins can request a token by posting valid credentials to the `/GetTokenAdmin` endpoint, which returns a token valid for 1 hour. This token is required to authorize protected endpoints like `/delete`, ensuring secure access to critical functionalities. The verification middleware checks for the presence and validity of the token before granting access to sensitive actions.\n    \n4. **Pagination and Data Limiting**:  \n    To handle large datasets effectively, the API includes features such as limiting responses. For example, when retrieving questions by series name, users can fetch a limited number of results (like the first five entries). This ensures fast response times and scalability, making the API well-suited for high-traffic environments.\n    \n5. **Database Integration with MongoDB**:  \n    The API connects to a MongoDB database, storing all data in a structured format. MongoDB’s NoSQL capabilities allow flexible schema design, making it easier to handle the dynamic nature of Dragon Ball data. The `Data` model is used for managing all database operations, with `_id` fields being incremented automatically to ensure unique identifiers for each entry.\n    \n6. **Error Handling and Responses**:  \n    Proper error handling mechanisms have been implemented throughout the API to ensure smooth and informative responses. Whether it’s a `404` for non-existent data or a `500` for server-side issues, users are provided with meaningful error messages. For instance, if a user attempts to fetch data with an invalid or non-existent ID, the API gracefully handles the situation by returning a message that specifies whether the ID is too large or too small.\n    \n\n### Technology Stack\n\n- **TypeScript**: The entire API is built using TypeScript, providing strong typing and improved code reliability. This ensures fewer runtime errors and makes the code more maintainable and scalable.\n    \n- **Node.js & Express**: The API runs on **Node.js**, utilizing the **Express.js** framework for handling HTTP requests and routing. Express.js offers a lightweight and flexible structure, ideal for building RESTful APIs.\n    \n- **MongoDB**: The database is managed using **MongoDB**, a NoSQL database that allows easy management of large datasets, such as those involving Dragon Ball characters, episodes, and series.\n    \n- **JWT Authentication**: **jsonwebtoken** is used to implement secure admin-level access. By generating and validating tokens, the API ensures that only authorized users can perform sensitive operations.\n    \n- **Environment Configuration**: **dotenv** is used to manage environment variables, such as the JWT secret, port configuration, and admin credentials, keeping the system secure and easy to configure across different environments.\n    \n\n### Conclusion\n\nBuilt in TypeScript for a balance of performance and maintainability, the Dragon Ball API is a robust and highly functional web service for accessing and manipulating data from one of the most beloved anime franchises. With secure authentication, flexible CRUD operations, and MongoDB integration, this API stands as a powerful resource for Dragon Ball fans and developers looking to create interactive experiences, trivia games, or content platforms.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33549695"
+	},
+	"item": [
+		{
+			"name": "GetTokenAdmin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "Mishra Shardendu",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "shardendu4321",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"\",\r\n  \"password\": \"\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/GetTokenAdmin",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"GetTokenAdmin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Random",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base}}/random",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Data By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base}}/question/25",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"question",
+						"25"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Series Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base}}/series/Dragon Ball Super",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"series",
+						"Dragon Ball Super"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Data Set",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"series\": \"Dragon Ball Daima\",\r\n  \"question\": \"Is Daima Last Project of Akira Toriyama?\",\r\n  \"answer\": \"No, according to leaks there is one more movie which Toriyama San worked on,that's his last Project.\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/add",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updatng Data Entry",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"series\": \"Dragon Ball Z\",\r\n  \"question\": \"Who is better Vegeta or Kakarot?\",\r\n  \"answer\": \"Vegeta Ez\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/question/1",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"question",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updation Using Patch Request",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"answer\": \"Vegeta is the Strongest !!\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/question/1",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"question",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deleting One Entry Using Authentication",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1pc2hyYSBTaGFyZGVuZHUiLCJpYXQiOjE3MjY5MDExNzcsImV4cCI6MTcyNjkwNDc3N30.wrH5nnZtvXYdNQcTb0uJqOc-nefNS-crlp55I2_FdTo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "{{base}}/question/101",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"question",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All / Reset to Default State",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1pc2hyYSBTaGFyZGVuZHUiLCJpYXQiOjE3MjY5MDE0NDcsImV4cCI6MTcyNjkwNTA0N30.U5nkGSndbxWZ0TZXDSlulwT-VVTvUqOoU_7E2FgH2Hw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{server_3}}/delete",
+					"host": [
+						"{{server_3}}"
+					],
+					"path": [
+						"delete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

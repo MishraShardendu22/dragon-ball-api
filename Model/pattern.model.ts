@@ -1,13 +1,13 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
-interface IData extends Document {
+interface IData {
     question: string;
     answer: string;
     series: string;
-    _id: number; // Optional, if you want to use a numeric id
+    _id: number;
 }
 
-const dataSchema: Schema = new mongoose.Schema(
+const dataSchema = new Schema<IData>(
     {
         question: {
             type: String,
@@ -26,10 +26,11 @@ const dataSchema: Schema = new mongoose.Schema(
             required: true
         },
     },
-    { 
-        timestamps: true 
+    {
+        timestamps: true
     }
 );
 
 const Data = mongoose.model<IData>('Data', dataSchema);
+
 export default Data;

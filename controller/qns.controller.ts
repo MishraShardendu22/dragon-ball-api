@@ -13,7 +13,7 @@ export const getRandomQuestion = async (req: Request, res: Response) => {
 
 export const getQuestionById = async (req: Request, res: Response) => {
   try {
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.id as string);
     const data = await Data.findOne({ _id: id });
 
     if (!data) {
@@ -65,7 +65,7 @@ export const addQuestion = async (req: Request, res: Response) => {
 };
 export const updateQuestion = async (req: Request, res: Response) => {
   try {
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.id as string);
     const data = req.body;
 
     const updatedData = await Data.findOneAndUpdate(
@@ -91,7 +91,7 @@ export const updateQuestion = async (req: Request, res: Response) => {
 
 export const patchQuestion = async (req: Request, res: Response) => {
   try {
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.id as string);
     const { series, question, answer } = req.body;
 
     const updatedQuestion = await Data.findOneAndUpdate(
@@ -114,7 +114,7 @@ export const patchQuestion = async (req: Request, res: Response) => {
 export const deleteQuestion = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
-    const deleted = await Data.findOneAndDelete({ _id: parseInt(id) });
+    const deleted = await Data.findOneAndDelete({ _id: parseInt(id as string) });
 
     if (!deleted) {
       return res.status(404).json({ message: 'No such question exists' });

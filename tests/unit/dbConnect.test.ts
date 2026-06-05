@@ -13,7 +13,7 @@ describe('dbConnect', () => {
 
   it('throws when MONGO_URI missing', async () => {
     delete process.env.MONGO_URI;
-    await expect(dbConnect()).rejects.toThrow('MONGO_URI is not defined');
+    await expect(dbConnect()).rejects.toThrow('MONGO_URI is not defined in environment variables');
   });
 
   it('throws on connect failure', async () => {

@@ -1,7 +1,8 @@
 # 🐉 Dragon Ball API
 
 **Note**: The documentation includes examples and an **Ask-AI chat bot** to help you explore the API easily!  
-**Live Alternate API URL**: [Dragon Ball API](https://dragon-ball-api-6yp5.onrender.com)
+**PR**: [Keploy API Collection](https://github.com/keploy/public-apis-collection/pull/105)
+**Live Demo**: [Dragon Ball API](https://www.youtube.com/watch?v=9HNClzXRqf4)
 
 **Love Dragon Ball?** This API is built for fans! Access, manage, and update Dragon Ball trivia with our Express-based custom REST API.
 
